@@ -1,0 +1,1 @@
+CI demo: simple add function with pytest tests.
