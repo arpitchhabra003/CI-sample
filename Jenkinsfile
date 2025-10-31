@@ -5,14 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building application..."
-                bat 'python --version'
+                bat 'python3  --version'
             }
         }
 
         stage('Test') {
             steps {
                 echo "Running tests..."
-                bat "python -m pip install --upgrade pip"
+                bat "python3 -m pip install --upgrade pip"
                 bat "pip install pytest"
                 bat "pytest -q"
             }
