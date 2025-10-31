@@ -5,22 +5,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building application..."
-                sh 'python --version'
+                bat 'python --version'
             }
         }
 
         stage('Test') {
             steps {
                 echo "Running tests..."
-                sh "pip install pytest"
-                sh "pytest -q"
+                bat "python -m pip install --upgrade pip"
+                bat "pip install pytest"
+                bat "pytest -q"
             }
         }
 
         stage('Deploy') {
             steps {
                 echo "Deploying application..."
-                sh 'echo "App deployed successfully!"'
+                bat 'echo App deployed successfully!'
             }
         }
     }
