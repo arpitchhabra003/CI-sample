@@ -1,14 +1,36 @@
 pipeline {
-  agent any
-  stages {
-    stage('Checkout') {
-      steps {
-        checkout([$class: 'GitSCM',
-          branches: [[name: 'refs/heads/main']],
-          userRemoteConfigs: [[url: 'https://github.com/arpitchhabra003/CI-sample.git', credentialsId: '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
-']]
-        ])
-      }
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building application..."
+                sh 'python --version'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+                sh "pip install pytest"
+                sh "pytest -q"
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying application..."
+                sh 'echo "App deployed successfully!"'
+            }
+        }
     }
-  }
+
+    post {
+        success {
+            echo "Pipeline completed successfully."
+        }
+        failure {
+            echo "Pipeline failed."
+        }
+    }
 }
