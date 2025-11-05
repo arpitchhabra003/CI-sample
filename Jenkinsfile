@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building application..."
-                bat '"C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe" --version'
+                bat "python --version"
 
             }
         }
@@ -13,9 +13,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests..."
-                bat "\"C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe\" -m pip install --upgrade pip"
-                bat "\"C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe\" -m pip install pytest"
-                bat "\"C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe\" -m pytest -q"
+                bat "python -m pip install --upgrade pip"
+                bat "pip install pytest"
+                bat "pytest -q"
 
             }
         }
